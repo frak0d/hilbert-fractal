@@ -28,14 +28,14 @@ int HEIGHT = 1280;
 int edge = SLANTED;
 int colors = true;
 
-int stroke = 4;
-int step = 10;
-int leval = 6;
+int stroke = 5;
+int step = 20;
+int leval = 5;
 
 uint8_t R,G,B;
 float slope;
-int xPos = 2;
-int yPos = 2;
+int xPos = 50;
+int yPos = 50;
 int newX = xPos;
 int newY = yPos;
 
