@@ -1,7 +1,6 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdint>
-#include <unistd.h>
 #include <SDL2/SDL.h>
 
 using namespace std;
@@ -26,12 +25,12 @@ enum {
 int WIDTH = 720;
 int HEIGHT = 1280;
 
-int edge = SQUARE;
+int edge = SLANTED;
 int colors = true;
 
-int stroke = 0;
-int step = 1;
-int leval = 8;
+int stroke = 4;
+int step = 10;
+int leval = 6;
 
 uint8_t R,G,B;
 float slope;
@@ -67,7 +66,7 @@ void DrawLine(SDL_Renderer* renderer, int direction, int x1, int y1, int x2, int
 		}
 		break;
 	
-	case CURVED:	
+	case CURVED:			// WIP //
 		switch(direction)
 		{
 		case UP:
@@ -304,9 +303,9 @@ int main()
 	
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_SetHint(SDL_HINT_RENDER_BATCHING, "1");
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,"1");
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,"1");		// Linear Filtering
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);	// 4x MSAA
 	SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, 0, &window, &renderer);
 	SDL_Texture* backbuff = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, WIDTH, HEIGHT);
 	//SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
